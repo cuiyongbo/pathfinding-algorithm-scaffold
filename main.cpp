@@ -52,6 +52,7 @@ int main(int argc, char const *argv[])
 
     vector<pair<path_finder_func_t, string>> pathFinders;
     pathFinders.push_back(make_pair(BFSFindPath, "BFS"));
+    pathFinders.push_back(make_pair(AStarFindPath, "AStar"));
 
     for (auto& p: pathFinders)
     {
