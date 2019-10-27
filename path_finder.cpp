@@ -1,6 +1,7 @@
 #include <queue>
 #include <vector>
 #include <climits>
+#include <cstddef>
 #include "path_finder.h"
 
 using namespace std;
@@ -26,8 +27,7 @@ int BFSFindPath(GridCoordinate src, GridCoordinate dest,
 {
     int n = mapWidth * mapHeight;
     int startNodeId = nodeId(src, mapWidth);
-    int targetNodeId = nodeId(src, mapWidth);
-
+    int targetNodeId = nodeId(dest, mapWidth);
 
     g_exploredNodes = 0;
     vector<int> parent(n);
@@ -35,13 +35,13 @@ int BFSFindPath(GridCoordinate src, GridCoordinate dest,
     distanceFromStart[startNodeId] = 0;
     queue<int> q;
     q.push(startNodeId);
-    vector<int> directions {+1, -1, mapWidth, -mapWidth};
+    vector<int> g_directions {+1, -1, mapWidth, -mapWidth};
     while(!q.empty())
     {
         int u = q.front(); q.pop();
         g_exploredNodes++;
 
-        for(auto e: directions)
+        for(auto e: g_directions)
         {
             int v = u + e;
             if((e==1 && (v%mapWidth==0)) || (e==-1 && (u%mapWidth==0)))
@@ -79,4 +79,12 @@ end:
     {
         return distanceFromStart[targetNodeId];
     }
+}
+
+int AStarFindPath(GridCoordinate src, GridCoordinate dest,
+    const uint8_t* pMap, int mapWidth, int mapHeight,
+    int* outBuffer, int outBufferSize)
+{
+
+    return 0;
 }
