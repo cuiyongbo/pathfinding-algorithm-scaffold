@@ -3,7 +3,7 @@
 CC = g++
 CPPFLAGS += -g -Wall -O3
 CFLAGS += -std=c++11 -I.
-LIBS = -lboost_system -lboost_random
+LIBS =
 PROC = pathfinders
 
 all:$(PROC)

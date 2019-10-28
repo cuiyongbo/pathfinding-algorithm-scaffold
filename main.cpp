@@ -3,8 +3,7 @@
 #include <algorithm>
 #include <ctime>
 #include <stdint.h>
-#include <boost/random/random_device.hpp>
-#include <boost/random/uniform_int_distribution.hpp>
+#include <random>
 
 #include "path_finder.h"
 
@@ -40,8 +39,9 @@ int main(int argc, char const *argv[])
 
     const int TIMES = 100;
     vector<GridCoordinate> tests; // coordinates test suite
-    boost::random::random_device rng;
-    boost::random::uniform_int_distribution<> uniform(0, traversable.size()-1);
+
+    random_device rng;
+    uniform_int_distribution<int> uniform(0, traversable.size()-1);
     for (int i = 0; i < TIMES; ++i)
     {
         int u = traversable[uniform(rng)];
