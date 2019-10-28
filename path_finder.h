@@ -44,6 +44,10 @@ int AStarFindPathNoTieDiag(GridCoordinate src, GridCoordinate dest,
     const uint8_t* pMap, int mapWidth, int mapHeight,
     int* outBuffer, int outBufferSize);
 
+int DijkstraFindPath(GridCoordinate src, GridCoordinate dest,
+    const uint8_t* pMap, int mapWidth, int mapHeight,
+    int* outBuffer, int outBufferSize);
+
 int AStarFindPathLandmarks(GridCoordinate src, GridCoordinate dest,
     const uint8_t* pMap, int mapWidth, int mapHeight,
     int* outBuffer, int outBufferSize);

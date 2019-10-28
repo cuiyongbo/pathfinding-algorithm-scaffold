@@ -439,6 +439,69 @@ end:
     }
 }
 
+int DijkstraFindPath(GridCoordinate src, GridCoordinate dest,
+    const uint8_t* pMap, int mapWidth, int mapHeight,
+    int* outBuffer, int outBufferSize)
+{
+    int n = mapWidth * mapHeight;
+    int startNodeId = nodeId(src, mapWidth);
+    int targetNodeId = nodeId(dest, mapWidth);
+
+    g_exploredNodes = 0;
+    vector<int> parent(n);
+    vector<int> distanceFromStart(n, INT_MAX);
+    distanceFromStart[startNodeId] = 0;
+    vector<int> directions { +1, -1, mapWidth, -mapWidth};
+
+    // tuple - distanceToDest, curNodeId
+    priority_queue<pair<int, int>,
+        vector<pair<int, int>>,
+        greater<pair<int, int>>> pq;
+
+    pq.push(make_pair(0, startNodeId));
+    while(!pq.empty())
+    {
+        int u = pq.top().second; pq.pop(); g_exploredNodes++;
+        for (int e: directions)
+        {
+            int v = u+e;
+            if(((e == 1) && (v%mapWidth==0)) || ((e == -1) && (u%mapWidth==0)))
+                continue;
+
+            if(0<=v && v<n && distanceFromStart[v] > distanceFromStart[u]+1 && pMap[v])
+            {
+                parent[v] = u;
+                distanceFromStart[v] = distanceFromStart[u] + 1;
+
+                if(v == targetNodeId)
+                    goto end;
+
+                pq.push(make_pair(distanceFromStart[v], v));
+            }
+        }
+    }
+
+end:
+    if(distanceFromStart[targetNodeId] == INT_MAX)
+    {
+        return -1;
+    }
+    else if(outBuffer != NULL && distanceFromStart[targetNodeId] <= outBufferSize)
+    {
+        for (int cur=targetNodeId, i=distanceFromStart[targetNodeId]-1;
+                i >= 0; --i)
+        {
+            outBuffer[i] = cur;
+            cur = parent[cur];
+        }
+        return distanceFromStart[targetNodeId];
+    }
+    else
+    {
+        return distanceFromStart[targetNodeId];
+    }
+}
+
 int AStarFindPathLandmarks(GridCoordinate src, GridCoordinate dest,
     const uint8_t* pMap, int mapWidth, int mapHeight,
     int* outBuffer, int outBufferSize)
@@ -452,7 +515,7 @@ int AStarFindPathLandmarks(GridCoordinate src, GridCoordinate dest,
     auto heuristic = [=](int u)
     {
         int m = 0;
-        for(int i=0; i<g_landmarks.size(); i++)
+        for(int i=0; i<(int)g_landmarks.size(); i++)
             m = max(m, LD[i][targetNodeId]-LD[i][u]);
         return m;
     };
@@ -531,7 +594,7 @@ void _initializeLandmarks(int k, const uint8_t* pMap, int mapWidth, int mapHeigh
     int n = mapWidth * mapHeight;
     vector<int> directions {-1, 1, -mapWidth, mapWidth};
 
-    while(g_landmarks.size() < k)
+    while((int)g_landmarks.size() < k)
     {
         if (g_landmarks.empty())
         {
@@ -579,7 +642,7 @@ void _initializeLandmarks(int k, const uint8_t* pMap, int mapWidth, int mapHeigh
     }
 
     LD.resize(g_landmarks.size());
-    for (int i = 0; i < g_landmarks.size(); ++i)
+    for (int i = 0; i < (int)g_landmarks.size(); ++i)
     {
         vector<int> parent(n);
         LD[i].resize(n, INT_MAX);
