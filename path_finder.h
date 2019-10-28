@@ -16,8 +16,11 @@ typedef int (*path_finder_func_t) (GridCoordinate src, GridCoordinate dest,
     const uint8_t* pMap, int mapWidth, int mapHeight,
     int* outBuffer, int outBufferSize);
 
-
 int BFSFindPath(GridCoordinate src, GridCoordinate dest,
+    const uint8_t* pMap, int mapWidth, int mapHeight,
+    int* outBuffer, int outBufferSize);
+
+int BFSFindPathDiag(GridCoordinate src, GridCoordinate dest,
     const uint8_t* pMap, int mapWidth, int mapHeight,
     int* outBuffer, int outBufferSize);
 
@@ -25,5 +28,16 @@ int AStarFindPath(GridCoordinate src, GridCoordinate dest,
     const uint8_t* pMap, int mapWidth, int mapHeight,
     int* outBuffer, int outBufferSize);
 
+int AStarFindPathDiag(GridCoordinate src, GridCoordinate dest,
+    const uint8_t* pMap, int mapWidth, int mapHeight,
+    int* outBuffer, int outBufferSize);
+
+int AStarFindPathNoTie(GridCoordinate src, GridCoordinate dest,
+    const uint8_t* pMap, int mapWidth, int mapHeight,
+    int* outBuffer, int outBufferSize);
+
+int AStarFindPathNoTieDiag(GridCoordinate src, GridCoordinate dest,
+    const uint8_t* pMap, int mapWidth, int mapHeight,
+    int* outBuffer, int outBufferSize);
 
 #endif
