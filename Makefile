@@ -7,7 +7,7 @@ LIBS =
 PROC = pathfinders
 
 all:$(PROC)
-pathfinders: main.cpp path_finder.cpp path_finder.h
+pathfinders: main.cpp path_finder.cpp
 	$(CC) $(CPPFLAGS) $(CFLAGS) $? -o $@ $(LIBS)
 
 clean:

@@ -1,9 +1,13 @@
 #ifndef _PATH_FINDER_H
 #define _PATH_FINDER_H
 
+#include <vector>
+
 typedef unsigned char uint8_t;
 
 extern int g_exploredNodes;
+extern std::vector<int> g_landmarks;
+extern std::vector<std::vector<int>> LD;
 
 struct GridCoordinate
 {
@@ -37,6 +41,10 @@ int AStarFindPathNoTie(GridCoordinate src, GridCoordinate dest,
     int* outBuffer, int outBufferSize);
 
 int AStarFindPathNoTieDiag(GridCoordinate src, GridCoordinate dest,
+    const uint8_t* pMap, int mapWidth, int mapHeight,
+    int* outBuffer, int outBufferSize);
+
+int AStarFindPathLandmarks(GridCoordinate src, GridCoordinate dest,
     const uint8_t* pMap, int mapWidth, int mapHeight,
     int* outBuffer, int outBufferSize);
 

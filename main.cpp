@@ -57,6 +57,7 @@ int main(int argc, char const *argv[])
     pathFinders.push_back(make_pair(AStarFindPathNoTie, "AStarNoTie"));
     pathFinders.push_back(make_pair(AStarFindPathDiag, "AStarDiag"));
     pathFinders.push_back(make_pair(AStarFindPathNoTieDiag, "AStarNoTieDiag"));
+    pathFinders.push_back(make_pair(AStarFindPathLandmarks, "AStarLandmarks"));
 
     for (auto& p: pathFinders)
     {
