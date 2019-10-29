@@ -22,3 +22,4 @@ and they will be removed in the future.
 .. [#] `Algorithm benchmark sets <https://www.movingai.com/benchmarks/grids.html>`_
 .. [#] `An orelly book Respository with graph theory <https://github.com/neo4j-graph-analytics>`_
 .. [#] `OSRM-Backend <https://github.com/Project-OSRM/osrm-backend>`_
+.. [#] `Shortest Paths Algorithms in JAVA <https://github.com/navjindervirdee/Advanced-Shortest-Paths-Algorithms.git>`
