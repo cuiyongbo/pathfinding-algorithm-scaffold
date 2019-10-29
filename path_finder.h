@@ -52,4 +52,8 @@ int AStarFindPathLandmarks(GridCoordinate src, GridCoordinate dest,
     const uint8_t* pMap, int mapWidth, int mapHeight,
     int* outBuffer, int outBufferSize);
 
+int AStarFindPathLandmarksDiag(GridCoordinate src, GridCoordinate dest,
+    const uint8_t* pMap, int mapWidth, int mapHeight,
+    int* outBuffer, int outBufferSize);
+
 #endif

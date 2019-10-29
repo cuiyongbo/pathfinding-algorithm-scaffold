@@ -59,6 +59,7 @@ int main(int argc, char const *argv[])
     pathFinders.push_back(make_pair(AStarFindPathNoTieDiag, "AStarNoTieDiag"));
     pathFinders.push_back(make_pair(DijkstraFindPath, "Dijkstra"));
     pathFinders.push_back(make_pair(AStarFindPathLandmarks, "AStarLandmarks"));
+    pathFinders.push_back(make_pair(AStarFindPathLandmarksDiag, "AStarLandmarksDiag"));
 
     for (auto& p: pathFinders)
     {
@@ -72,7 +73,7 @@ int main(int argc, char const *argv[])
             total += g_exploredNodes;
         }
         double dur = clock() - start;
-        printf("%32s -- avg time: %-3.3fms\tavg nodes: %8lld\n",
+        printf("%24s -- avg time: %-3.3fms\tavg nodes: %8lld\n",
             p.second.c_str(),
             double(dur/CLOCKS_PER_SEC) * 1000 / TIMES,
             total / TIMES);
