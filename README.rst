@@ -23,3 +23,5 @@ and they will be removed in the future.
 .. [#] `An orelly book Respository with graph theory <https://github.com/neo4j-graph-analytics>`_
 .. [#] `OSRM-Backend <https://github.com/Project-OSRM/osrm-backend>`_
 .. [#] `Shortest Paths Algorithms in JAVA <https://github.com/navjindervirdee/Advanced-Shortest-Paths-Algorithms.git>`
+.. [#] `OpenStreetMap China data downnload <http://download.geofabrik.de/asia/china.html>`_
+.. [#] `Cool visualization - geojson.io <https://github.com/mapbox/geojson.io>`_
