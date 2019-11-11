@@ -23,5 +23,7 @@ and they will be removed in the future.
 .. [#] `An orelly book Respository with graph theory <https://github.com/neo4j-graph-analytics>`_
 .. [#] `OSRM-Backend <https://github.com/Project-OSRM/osrm-backend>`_
 .. [#] `Shortest Paths Algorithms in JAVA <https://github.com/navjindervirdee/Advanced-Shortest-Paths-Algorithms.git>`
-.. [#] `OpenStreetMap China data downnload <http://download.geofabrik.de/asia/china.html>`_
+.. [#] `OpenStreetMap downnload <http://download.geofabrik.de/index.html>`_
 .. [#] `Cool visualization - geojson.io <https://github.com/mapbox/geojson.io>`_
+.. [#] `libosmium - A fast and flexible C++ library for working with OpenStreetMap data <https://osmcode.org/libosmium/>`_
+.. [#] `Graphhopper - A Java-based routing project <https://github.com/graphhopper/graphhopper.git>`_
